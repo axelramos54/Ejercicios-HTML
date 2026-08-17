@@ -1,0 +1,123 @@
+/* Estilos CSS para la página web */
+
+/* Variables de colores */
+:root{
+    --color-fondo: #EFEFE4;
+    --color-texto: #232E38;
+    --color-subtitulos: #5B6570;
+    --color-links: #1E4A47;
+    --color-links-acentuados: #5C231C;
+    --color-borde: #D8D6C6;
+}
+
+/* Bordes y tipografía para todos los elementos */
+*{
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos generales del cuerpo de la página */
+body{
+    /* Elimina el margen predeterminado */
+    margin:0%;
+    /* Establece el color de fondo */
+    background-color: var(--color-fondo);
+    /* Establece un patrón de fondo con un gradiente radial */
+    background-image: radial-gradient(var(--color-borde) 1px, transparent 1px);
+    /* Define el tamaño del patrón de fondo */
+    background-size: 20px 20px;
+    /* Establece el color del texto */
+    color: var(--color-texto);
+}
+
+/* Estilos para los enlaces */
+a{
+    color: var(--color-links);
+}
+
+/* Estilos para los enlaces al pasar el mouse por encima */
+a:hover{
+    color: var(--color-links-acentuados);
+}
+
+/* Estilos para los encabezados h1 */
+h1{
+    /* Establece el tipo de letra */
+    font-family: 'Arial', sans-serif;
+    /* Establece la alineación del texto */
+    text-align: center;
+    /* Establece el tamaño del texto */
+    font-size: 44px;
+    /* Establece el peso del texto */
+    font-weight: 600;
+    /* Establece el margen del texto */
+    margin: 30px 0 20px;
+    /* Establece el color del texto */
+    color: var(--color-texto);
+}
+
+p{
+    /* Establece la alineación del texto */
+    text-align: center;
+    /* Establece el tamaño del texto */
+    font-size: 18px;
+    /* Establece el ancho máximo del párrafo */
+    max-width: 50ch;
+    /* Establece el margen del texto */
+    margin: 25px 100px 20px;
+    /* Establece el color del texto */
+    color: var(--color-subtitulos);
+}
+
+/* Estilos para los encabezados h2 */
+h2{
+    /* Establece la alineación del texto */
+    text-align: left;
+    /* Establece el tamaño del texto */
+    font-size: 32px;
+    /* Establece el peso del texto */
+    font-weight: 600;
+    /* Establece el margen del texto */
+    margin: 40px 60px 15px 20px;
+    /* Establece el color del texto */
+    color: var(--color-texto);
+}
+
+/* Estilos para los párrafos que siguen a los encabezados h2 */
+h2 + p{
+    /* Establece la alineación del texto */
+    text-align: left;
+    /* Establece el tamaño del texto */
+    font-size: 18px;
+    /* Establece el ancho máximo del párrafo */
+    max-width: 50ch;
+    /* Establece el margen del texto */
+    margin: 15px 20px 20px;
+    /* Establece el color del texto */
+    color: var(--color-subtitulos);
+}
+
+
+ul{
+    /* Establece el margen del texto */
+    margin: -5px 0px 0px 0px;
+    /* Establece el color del texto */
+    line-height: 30px;
+    color: var(--color-texto);
+}
+
+ol{
+    /* Establece el margen del texto */
+    margin: -5px 0px 0px 0px;
+    /* Establece el color del texto */
+    line-height: 30px;
+    color: var(--color-texto);
+}
+
+h3{
+    display: flex;
+}
+
+.links{
+    color: var(--color-links)
+}
