@@ -30,6 +30,10 @@ body{
     color: var(--color-texto);
 }
 
+.text{
+    display: flex;
+}
+
 /* Estilos para los enlaces */
 a{
     color: var(--color-links);
@@ -64,7 +68,7 @@ p{
     /* Establece el ancho máximo del párrafo */
     max-width: 50ch;
     /* Establece el margen del texto */
-    margin: 25px 100px 20px;
+    margin: 25px 200px 20px;
     /* Establece el color del texto */
     color: var(--color-subtitulos);
 }
@@ -97,6 +101,38 @@ h2 + p{
     color: var(--color-subtitulos);
 }
 
+h3{
+    display: flex;
+}
+
+h4 + p{
+    /* Establece la alineación del texto */
+    text-align: left;
+    /* Establece el tamaño del texto */
+    font-size: 18px;
+    /* Establece el ancho máximo del párrafo */
+    max-width: 50ch;
+    /* Establece el margen del texto */
+    margin: 15px 20px 20px;
+    /* Establece el color del texto */
+    color: var(--color-subtitulos);
+}
+
+h5{
+    /* Establece el tipo de letra */
+    font-family: 'Arial', sans-serif;
+    /* Establece la alineación del texto */
+    text-align: center;
+    /* Establece el tamaño del texto */
+    font-size: 22px;
+    /* Establece el peso del texto */
+    font-weight: 600;
+    /* Establece el margen del texto */
+    margin: 30px 0 20px;
+    /* Establece el color del texto */
+    color: var(--color-texto);
+}
+
 
 ul{
     /* Establece el margen del texto */
@@ -114,9 +150,7 @@ ol{
     color: var(--color-texto);
 }
 
-h3{
-    display: flex;
-}
+
 
 .links{
     color: var(--color-links)
