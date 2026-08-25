@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Enlace a otro archivo CSS/ Establece el estilo de la página -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Enlace a la fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- Enlace a la fuente Poppins y la fuente Inter desde Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título de la página -->
+    <title>Practica 3 - Tablas y Div en HTML</title>
+</head>
+
+<body>
+
+    <!-- Encabezado de la página -->
+    <div id="encabezado">
+        <h1>Mis Tablas en HTML</h1>
+        <p>Axel Ramos Monroy — LSC, UNACH</p>
+    </div>
+
+
+    <!-- Barra de navegación -->
+    <div id="navegacion">
+        <ul>
+            <li><a href="#horario">Horario</a></li>
+            <li><a href="#calificaciones">Calificaciones</a></li>
+            <li><a href="#productos">Productos en venta</a></li>
+        </ul>
+    </div>
+
+    <!-- div para las tablas -->
+    <div id="tablas">
+
+        <!-- Tabla 1: Horario -->
+        <h2 id="horario">Horario</h2>
+        <table border="0">
+            <tr>
+                <th colspan="4">Horario semanal</th>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+            </tr>
+            <tr>
+                <td>8:00</td>
+                <td>Prog. Web</td>
+                <td>Matemáticas</td>
+                <td>Inglés</td>
+            </tr>
+            <tr>
+                <td>10:00</td>
+                <td>Bases de Datos</td>
+                <td>Prog. Web</td>
+                <td>Física</td>
+            </tr>
+            <tr>
+                <td>12:00</td>
+                <td>Redes</td>
+                <td>Inglés</td>
+                <td>Prog. Web</td>
+            </tr>
+            <tr>
+                <td>14:00</td>
+                <td>Física</td>
+                <td>Redes</td>
+                <td>Matemáticas</td>
+            </tr>
+        </table>
+
+        <!-- Tabla 2: Calificaciones (usa thead, tbody, tfoot con colspan) -->
+        <h2 id="calificaciones">Calificaciones</h2>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>Materia</th>
+                    <th>P1</th>
+                    <th>P2</th>
+                    <th>P3</th>
+                    <th>Promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prog. Web</td>
+                    <td>90</td>
+                    <td>85</td>
+                    <td>92</td>
+                    <td>89</td>
+                </tr>
+                <tr>
+                    <td>Bases de Datos</td>
+                    <td>80</td>
+                    <td>88</td>
+                    <td>84</td>
+                    <td>84</td>
+                </tr>
+                <tr>
+                    <td>Redes</td>
+                    <td>78</td>
+                    <td>82</td>
+                    <td>90</td>
+                    <td>83</td>
+                </tr>
+                <tr>
+                    <td>Inglés Técnico</td>
+                    <td>95</td>
+                    <td>91</td>
+                    <td>93</td>
+                    <td>93</td>
+                </tr>
+                <tr>
+                    <td>Matemáticas Discretas</td>
+                    <td>76</td>
+                    <td>80</td>
+                    <td>85</td>
+                    <td>80</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Promedio general</td>
+                    <td>85.8</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Tabla 3: Productos en venta (usa rowspan) -->
+        <h2 id="productos">Productos en venta</h2>
+        <table border="0">
+            <tr>
+                <th>Categoría</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+            <tr>
+                <td rowspan="2">Periféricos</td>
+                <td>Teclado mecánico</td>
+                <td>$450</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Mouse inalámbrico</td>
+                <td>$250</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Almacenamiento</td>
+                <td>USB 32GB</td>
+                <td>$120</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Disco SSD 480GB</td>
+                <td>$780</td>
+                <td>15</td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- div del pie de página -->
+    <div id="pie">
+        <p>Axel Ramos Monroy — LSC — Semestre 5° — Agosto 2026</p>
+    </div>
+
+
+</body>
+
+</html>

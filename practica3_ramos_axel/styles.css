@@ -1,0 +1,135 @@
+/* Estilos CSS para la página web */
+
+/* Variables de colores */
+:root {
+    --color-fondo: #FBF8F2;
+    --verde: #2F5233;
+    --mango: #F2A541;
+    --texto: #26312A;
+    --gris-claro: #E7E1D4;
+    --blanco: #FFFFFF;
+}
+
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--texto);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+#encabezado {
+    background: var(--verde);
+    color: var(--blanco);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#encabezado h1 {
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+}
+
+#encabezado p {
+    margin-top: 10px;
+    color: var(--mango);
+    font-weight: 600;
+}
+
+#navegacion {
+    position: sticky;
+    top: 0;
+    background: var(--blanco);
+    border-bottom: 2px solid var(--gris-claro);
+    z-index: 10;
+}
+
+#navegacion ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 0;
+    padding: 14px 0;
+    flex-wrap: wrap;
+}
+
+#navegacion a {
+    color: var(--verde);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+    transition: border-color 0.2s ease;
+}
+
+#navegacion a:hover {
+    border-color: var(--mango);
+}
+
+#tablas {
+    padding: 40px 0 10px;
+}
+
+#tablas h2 {
+    color: var(--verde);
+    border-left: 6px solid var(--mango);
+    padding-left: 12px;
+    margin: 40px 0 16px;
+    font-size: 1.4rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanco);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--gris-claro);
+}
+
+thead th,
+tr:first-child th {
+    background: var(--verde);
+    color: var(--blanco);
+}
+
+tbody tr:nth-child(even) {
+    background: #F5F1E6;
+}
+
+tbody tr:hover {
+    background: #FCE9C7;
+}
+
+tfoot td {
+    background: var(--mango);
+    color: var(--verde);
+    font-weight: 700;
+    border-bottom: none;
+}
+
+#pie {
+    margin-top: 50px;
+    background: var(--verde);
+    color: var(--blanco);
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 0.9rem;
+}
