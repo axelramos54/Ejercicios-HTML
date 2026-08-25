@@ -10,40 +10,45 @@
     --blanco: #FFFFFF;
 }
 
-
+/* Estilos generales del cuerpo del documento */
 body {
     margin: 0;
-    background: var(--bg);
+    background: var(--color-fondo);
     color: var(--texto);
     font-family: 'Inter', sans-serif;
     line-height: 1.5;
 }
-
+ 
+/* Tipografía para todos los encabezados (usan la fuente Poppins) */
 h1,
 h2,
 h3 {
     font-family: 'Poppins', sans-serif;
     margin: 0;
 }
-
+ 
+/* Encabezado principal de la página */
 #encabezado {
     background: var(--verde);
     color: var(--blanco);
     padding: 50px 20px;
     text-align: center;
 }
-
+ 
+/* Título dentro del encabezado */
 #encabezado h1 {
     font-size: 2rem;
     letter-spacing: 0.5px;
 }
-
+ 
+/* Subtítulo dentro del encabezado */
 #encabezado p {
     margin-top: 10px;
     color: var(--mango);
     font-weight: 600;
 }
-
+ 
+/* Barra de navegación, fija en la parte superior al hacer scroll */
 #navegacion {
     position: sticky;
     top: 0;
@@ -51,7 +56,8 @@ h3 {
     border-bottom: 2px solid var(--gris-claro);
     z-index: 10;
 }
-
+ 
+/* Lista de enlaces de navegación, en fila y centrada */
 #navegacion ul {
     list-style: none;
     display: flex;
@@ -61,7 +67,8 @@ h3 {
     padding: 14px 0;
     flex-wrap: wrap;
 }
-
+ 
+/* Estilo de cada enlace de navegación */
 #navegacion a {
     color: var(--verde);
     text-decoration: none;
@@ -71,15 +78,18 @@ h3 {
     padding-bottom: 4px;
     transition: border-color 0.2s ease;
 }
-
+ 
+/* Efecto al pasar el cursor sobre un enlace de navegación */
 #navegacion a:hover {
     border-color: var(--mango);
 }
-
+ 
+/* Contenedor general que agrupa las tablas */
 #tablas {
     padding: 40px 0 10px;
 }
-
+ 
+/* Títulos (h2) que anteceden a cada tabla */
 #tablas h2 {
     color: var(--verde);
     border-left: 6px solid var(--mango);
@@ -87,7 +97,8 @@ h3 {
     margin: 40px 0 16px;
     font-size: 1.4rem;
 }
-
+ 
+/* Estilo base aplicado a todas las tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -96,35 +107,41 @@ table {
     border-radius: 8px;
     overflow: hidden;
 }
-
+ 
+/* Espaciado y alineación de las celdas (encabezado y datos) */
 th,
 td {
     padding: 12px 14px;
     text-align: left;
     border-bottom: 1px solid var(--gris-claro);
 }
-
+ 
+/* Fondo de las celdas de encabezado: dentro de thead o en la primera fila de las tablas sin thead */
 thead th,
 tr:first-child th {
     background: var(--verde);
     color: var(--blanco);
 }
-
+ 
+/* Color alterno para las filas pares del cuerpo de la tabla (efecto cebra) */
 tbody tr:nth-child(even) {
     background: #F5F1E6;
 }
-
+ 
+/* Resalta la fila del cuerpo de la tabla al pasar el cursor sobre ella */
 tbody tr:hover {
     background: #FCE9C7;
 }
-
+ 
+/* Estilo de la fila de pie de tabla (totales/promedios) */
 tfoot td {
     background: var(--mango);
     color: var(--verde);
     font-weight: 700;
     border-bottom: none;
 }
-
+ 
+/* Pie de página del sitio */
 #pie {
     margin-top: 50px;
     background: var(--verde);
