@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Practica 4 - Novedades de HTML5</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Bitacora de Chiapas</h1>
+        <nav>
+            <a href="#canvas">Inicio</a>
+            <a href="#multimedia">Multimedia</a>
+            <a href="#formulario">Formulario</a>
+            <a href="#nota">Nota Curiosa</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="canvas">
+
+            <article>
+                <p><time datetime="2026-08-30">30 de agosto de 2026</time></p>
+                <h2>Un cuaderno visual y sonoro de <mark>Chiapas</mark></h2>
+                <p>Estas páginas guardan lo que veo, escucho y cruzo en cada salida:
+                    caminos de montaña, ríos, y el sonido de la selva al amanecer.</p>
+            </article>
+
+            <canvas id="paisaje" width="500" height="200" style="border:1px solid #000000;">
+                Tu navegador no soporta el elemento canvas.
+            </canvas>
+
+        </section>
+
+        <section id="multimedia">
+            <h2>Multimedia</h2>
+            <figure>
+
+                <audio controls>
+                    <source src="audio/lluvia-selva.mp3" type="audio/mpeg">
+                    <source src="audio/lluvia-selva.ogg" type="audio/ogg">
+                </audio>
+
+                <figcaption>Grabación de campo: lluvia en la selva Lacandona</figcaption>
+
+            </figure>
+
+            <figure>
+
+                <video controls poster="imagenes/portada-cañon.jpg">
+                    <source src="video/canon-sumidero.mp4" type="video/mp4">
+                    <source src="video/canon-sumidero.webm" type="video/webm">
+                </video>
+
+                <figcaption>
+
+                    <a>Recorrido corto por el Cañón del Sumidero</a>
+
+                    <a class="canal" href="https://www.youtube.com/@tebanhdz13" target="_blank" rel="noopener">
+                        Revisa el canal de YouTube del autor original
+                    </a>
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+
+        <section id="formulario">
+            <h2>Únete al cuaderno</h2>
+            <p>Deja tus datos si quieres recibir la próxima entrada.</p>
+
+            <form>
+
+                <label>
+                    Correo electrónico:
+                    <input type="email" placeholder="tucorreo@ejemplo.com" required>
+                </label>
+
+                <label>
+                    Tu sitio o blog (opcional)
+                    <input type="url" placeholder="https://tublog.com">
+                </label>
+
+                <label>
+                    Teléfono (opcional)
+                    <input type="tel" placeholder="123-456-7890">
+                </label>
+
+                <label>
+                    Buscar en el cuaderno
+                    <input type="search" placeholder="Buscar...">
+                </label>
+
+                <label>
+                    Destino favorito*
+                    <input type="text" list="destinos" placeholder="Escribe tu destino favorito">
+                    <datalist id="destinos">
+                        <option value="Cañón del Sumidero">
+                        <option value="San Cristóbal de las Casas">
+                        <option value="Agua Azul">
+                        <option value="Lagunas de Montebello">
+                        <option value="Palenque">
+                    </datalist>
+                </label>
+
+                <label>
+                    Fecha de tu próxima visita
+                    <input type="date">
+                </label>
+
+                <label>
+                    ¿Qué tanto conoces Chiapas? (0-10)
+                    <input type="range" min="0" max="10">
+                </label>
+
+                <label>
+                    Edad
+                    <input type="number" min="0" max="100" placeholder="0-100">
+                </label>
+
+                <label>
+                    Color favorito para tu entrada
+                    <input type="color" value="#2F6F5E">
+                </label>
+
+                <label>Avance del cuaderno
+                    <progress value="70" max="100">70%</progress>
+                </label>
+
+                <button type="submit">Enviar</button>
+
+            </form>
+
+        </section>
+
+        <section id="nota">
+
+            <aside>
+
+                <details>
+
+                    <summary>Nota curiosa</summary>
+
+                    <p>Chiapas alberga más de una cuarta parte de las especies de aves
+                        de México, muchas de ellas visibles solo en la selva Lacandona.</p>
+
+                </details>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Axel Ramos Monroy - LSC - Práctica 4 - <time datetime="2026-08-30">
+                30 de agosto de 2026</time></p>
+
+        <p>Programación de Aplicaciones Web | Universidad Autónoma de Chiapas</p>
+
+    </footer>
+
+    <script>
+
+        const cv = document.getElementById('paisaje');
+        const ctx = cv.getContext('2d');
+
+        // Cielo (rectángulo con degradado)
+        const cielo = ctx.createLinearGradient(0, 0, 0, 140);
+        cielo.addColorStop(0, '#E0A857');
+        cielo.addColorStop(1, '#F5F1E8');
+        ctx.fillStyle = cielo;
+        ctx.fillRect(0, 0, 500, 140);
+
+        // Sol (círculo)
+        ctx.beginPath();
+        ctx.arc(400, 70, 30, 0, Math.PI * 2);
+        ctx.fillStyle = '#D9633B';
+        ctx.fill();
+
+        // Montañas (figura hechas con líneas)
+        ctx.beginPath();
+        ctx.moveTo(0, 140); ctx.lineTo(120, 55); ctx.lineTo(230, 140);
+        ctx.closePath();
+        ctx.fillStyle = '#2F6F5E';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(150, 140); ctx.lineTo(300, 45); ctx.lineTo(420, 140);
+        ctx.closePath();
+        ctx.fillStyle = '#132420';
+        ctx.fill();
+
+        // Suelo (rectángulo)
+        ctx.fillStyle = '#E4EEE9';
+        ctx.fillRect(0, 140, 500, 60);
+
+        // Texto sobre el canvas
+        ctx.fillStyle = '#1B2620';
+        ctx.font = '600 20px Work Sans, sans-serif';
+        ctx.fillText('Amanecer en Tuxtla', 20, 175);
+
+    </script>
+
+</body>
+
+</html>
