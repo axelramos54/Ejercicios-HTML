@@ -1,0 +1,31 @@
+name: Actualizar índice de prácticas
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generar index.html y README.md
+        run: node scripts/generate-index.js
+
+      - name: Commitear cambios si hay
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html README.md
+          git diff --cached --quiet || git commit -m "chore: actualizar índice de prácticas automáticamente"
+          git push
