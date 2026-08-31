@@ -14,8 +14,8 @@
 <!-- PRACTICAS:START -->
 | # | Práctica | Descripción | Código | Página publicada |
 |---|----------|--------------|--------|-------------------|
-| 02 | `practica2_ramos_axel` | Práctica 2 | [ver carpeta](./practica2_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica2_ramos_axel/) |
-| 03 | `practica3_ramos_axel` | Práctica 3 | [ver carpeta](./practica3_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica3_ramos_axel/) |
+| 02 | `practica2_100033745` | Elementos de HTML e hipervínculos | [ver carpeta](./practica2_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica2_100033745/) |
+| 03 | `practica3_100033745` | Tablas y listas | [ver carpeta](./practica3_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica3_100033745/) |
 <!-- PRACTICAS:END -->
 
 ## 🗂️ Estructura del repositorio
@@ -23,16 +23,16 @@
 ```
 Ejercicios-HTML/
 ├── index.html                   → página de inicio del sitio
-├── practica2_ramos_axel/
-│   └── index.html                → /practica2_ramos_axel/
-├── practica3_ramos_axel/
-│   └── index.html                → /practica3_ramos_axel/
+├── practica2_100033745/
+│   └── index.html                → /practica2_100033745/
+├── practica3_100033745/
+│   └── index.html                → /practica3_100033745/
 └── README.md                    → estás aquí
 ```
 
 ## ➕ Cómo agrego una práctica nueva
 
-1. Crea una carpeta nueva, por ejemplo `practica4_ramos_axel/`.
+1. Crea una carpeta nueva, por ejemplo `practica4_100033745/`.
 2. Adentro, agrega un archivo llamado exactamente `index.html` (así se publica solo con GitHub Pages).
 3. Súmala a la tabla de arriba con su número, el enlace a la carpeta y el enlace a la página publicada.
 4. Agrega también el enlace en el `index.html` de la raíz del repo.

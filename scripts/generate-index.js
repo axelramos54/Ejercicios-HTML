@@ -1,6 +1,6 @@
 // scripts/generate-index.js
 //
-// Escanea la raíz del repo buscando carpetas "practicaN_ramos_axel" que
+// Escanea la raíz del repo buscando carpetas "practicaN_100033745" que
 // tengan un index.html adentro, y regenera automáticamente el bloque de
 // enlaces en index.html y la tabla en README.md.
 //
@@ -20,10 +20,10 @@ function findPracticas() {
         .readdirSync(ROOT, { withFileTypes: true })
         .filter((entry) => entry.isDirectory())
         .map((entry) => entry.name)
-        .filter((name) => /^practica\d+_ramos_axel$/.test(name))
+        .filter((name) => /^practica\d+_100033745$/.test(name))
         .filter((name) => fs.existsSync(path.join(ROOT, name, 'index.html')))
         .map((folder) => {
-            const num = parseInt(folder.match(/^practica(\d+)_ramos_axel$/)[1], 10);
+            const num = parseInt(folder.match(/^practica(\d+)_100033745$/)[1], 10);
             const html = fs.readFileSync(path.join(ROOT, folder, 'index.html'), 'utf8');
             const descMatch = html.match(/<meta\s+name=["']description["']\s+content=["']([^"']*)["']/i);
             const description = descMatch ? descMatch[1] : `Práctica ${num}`;
