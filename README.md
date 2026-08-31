@@ -14,8 +14,8 @@
 <!-- PRACTICAS:START -->
 | # | Práctica | Descripción | Código | Página publicada |
 |---|----------|--------------|--------|-------------------|
-| 02 | `practica2_ramos_axel` | Elementos de HTML e hipervínculos | [ver carpeta](./practica2_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica2_ramos_axel/) |
-| 03 | `practica3_ramos_axel` | Tablas y listas | [ver carpeta](./practica3_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica3_ramos_axel/) |
+| 02 | `practica2_ramos_axel` | Práctica 2 | [ver carpeta](./practica2_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica2_ramos_axel/) |
+| 03 | `practica3_ramos_axel` | Práctica 3 | [ver carpeta](./practica3_ramos_axel) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica3_ramos_axel/) |
 <!-- PRACTICAS:END -->
 
 ## 🗂️ Estructura del repositorio
