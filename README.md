@@ -17,6 +17,7 @@
 | PRA02 | `practica2_100033745` | Práctica 2 | [ver carpeta](./practica2_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica2_100033745/) |
 | PRA03 | `practica3_100033745` | Práctica 3 | [ver carpeta](./practica3_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica3_100033745/) |
 | PRA04 | `practica4_100033745` | Práctica 4 | [ver carpeta](./practica4_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/practica4_100033745/) |
+| PRO02 | `proyecto2_100033745` | Investigación documental sobre HTTP, reimaginada como un mapa de ruta: la petición viaja como un tren por estaciones. | [ver carpeta](./proyecto2_100033745) | [abrir →](https://axelramos54.github.io/Ejercicios-HTML/proyecto2_100033745/) |
 <!-- PRACTICAS:END -->
 
 ## 🗂️ Estructura del repositorio
