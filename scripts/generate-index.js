@@ -93,3 +93,5 @@ console.log(`${practicas.length} práctica(s) encontrada(s): ${practicas.map((p)
 
 replaceBlock(path.join(ROOT, 'index.html'), buildIndexHtmlBlock(practicas));
 replaceBlock(path.join(ROOT, 'README.md'), buildReadmeBlock(practicas));
+
+//test
