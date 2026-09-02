@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>HTTP — Mapa de Ruta</title>
+<meta name="description" content="Investigación documental sobre HTTP, reimaginada como un mapa de ruta: la petición viaja como un tren por estaciones."/>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#inicio">Saltar al contenido</a>
+
+<header class="platform-header" id="platformHeader">
+  <div class="brand"><span class="badge" id="brandBadge">H</span> HTTP · Mapa de Ruta
+    <span class="now-at" id="nowAt">ahora en: inicio</span>
+  </div>
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar a tema oscuro">● oscuro</button>
+  </div>
+</header>
+
+<div class="route-progress" aria-hidden="true">
+  <div class="fill" id="progressFill"></div>
+  <div class="train" id="progressTrain"></div>
+</div>
+
+<nav aria-label="Secciones del sitio">
+  <div class="line-legend">
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <div class="legend-links" id="navLinks">
+      <a href="#inicio"><span class="dot" style="background:var(--ink)"></span>Inicio</a>
+      <a href="#leyenda"><span class="dot" style="background:var(--ink-soft)"></span>Leyenda de color</a>
+      <a href="#linea-a"><span class="dot" style="background:var(--c1xx)"></span>Línea A · Arquitectura</a>
+      <a href="#linea-b"><span class="dot" style="background:var(--c2xx)"></span>Línea B · Métodos</a>
+      <a href="#linea-c"><span class="dot" style="background:var(--c3xx)"></span>Línea C · Códigos</a>
+      <a href="#linea-d"><span class="dot" style="background:var(--c5xx)"></span>Línea D · Evolución</a>
+      <a href="#glosario"><span class="dot" style="background:var(--c4xx)"></span>Glosario</a>
+      <a href="#mapa"><span class="dot" style="background:var(--ink)"></span>Mapa completo</a>
+      <a href="#referencias"><span class="dot" style="background:var(--ink-soft)"></span>Referencias</a>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<div class="hero reveal" id="inicio" data-label="inicio" data-color="var(--ink)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c2xx)"></span>Investigación documental</p>
+  <h1>El viaje de una petición HTTP</h1>
+  <p class="lead">Cada vez que un navegador pide una página, esa petición hace un recorrido con paradas fijas: como un tren que sale de una estación, cruza varias líneas y llega a destino. Este sitio reimagina el protocolo HTTP como un mapa de ruta, donde cada método, cada código de estado y cada versión del protocolo es una línea con su propio color.</p>
+  <div class="ticket-strip">
+    <span>Asignatura: Programación de aplicaciones web</span>
+    <span>Docente: Rigoberto Pérez Ovando</span>
+    <span>Alumno: Axel Ramos Monroy · 5° "K"</span>
+    <span>UNACH · Tuxtla Gutiérrez, ago. 2026</span>
+  </div>
+
+  <div class="route-panel">
+    <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ruta de una petición HTTP: cliente, resolución DNS, conexión TCP, cifrado TLS, servidor, respuesta">
+      <line x1="60" y1="90" x2="840" y2="90" stroke="var(--ink)" stroke-width="4" stroke-dasharray="1 14" stroke-linecap="round"/>
+      <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)" text-anchor="middle">
+        <circle cx="60" cy="90" r="10" fill="var(--surface)" stroke="var(--c1xx)" stroke-width="4"/>
+        <text x="60" y="120">Cliente</text>
+        <circle cx="230" cy="90" r="8" fill="var(--surface)" stroke="var(--c1xx)" stroke-width="3"/>
+        <text x="230" y="120">DNS</text>
+        <circle cx="400" cy="90" r="8" fill="var(--surface)" stroke="var(--c2xx)" stroke-width="3"/>
+        <text x="400" y="120">TCP</text>
+        <circle cx="500" cy="90" r="8" fill="var(--surface)" stroke="var(--c5xx)" stroke-width="3"/>
+        <text x="500" y="120">TLS</text>
+        <circle cx="650" cy="90" r="8" fill="var(--surface)" stroke="var(--c3xx)" stroke-width="3"/>
+        <text x="650" y="120">Request</text>
+        <circle cx="840" cy="90" r="10" fill="var(--surface)" stroke="var(--c4xx)" stroke-width="4"/>
+        <text x="840" y="120">Servidor</text>
+      </g>
+      <text x="450" y="45" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--c2xx)">→ terminal: Response 200 OK</text>
+    </svg>
+  </div>
+
+  <figure class="media">
+    <img src="img/hero.jpg" alt="Panorama de una red de datos, referencia visual del recorrido de una petición HTTP" loading="lazy">
+    <figcaption>Cada petición HTTP viaja por una red física de cables, antenas y enrutadores antes de llegar a su destino.</figcaption>
+  </figure>
+</div>
+
+<hr class="divider"/>
+
+<!-- ================= LEYENDA DE COLOR ================= -->
+<section id="leyenda" class="reveal" data-label="leyenda de color" data-color="var(--ink-soft)">
+  <p class="eyebrow"><span class="dot" style="background:var(--ink-soft)"></span>Diseño de interfaz</p>
+  <h2>Leyenda de líneas: el sistema de color</h2>
+  <p>En un mapa de metro real, el color identifica la línea sin ambigüedad. Aquí pasa lo mismo: cada color de acento queda fijo a un concepto —la familia de código de estado que representa— y se repite en toda la navegación, las tarjetas y los diagramas, para que reconocer un color sea reconocer una idea.</p>
+
+  <div class="legend-grid">
+    <div class="legend-card">
+      <h3>Color con significado</h3>
+      <div class="swatch-row">
+        <span class="swatch" style="background:var(--c1xx)"></span>
+        <span class="swatch" style="background:var(--c2xx)"></span>
+        <span class="swatch" style="background:var(--c3xx)"></span>
+        <span class="swatch" style="background:var(--c4xx)"></span>
+        <span class="swatch" style="background:var(--c5xx)"></span>
+      </div>
+      <p style="font-size:14px;">Línea A (1xx), B (2xx), C (3xx), roja de error (4xx) y D (5xx). El mismo color nunca cambia de significado entre secciones.</p>
+    </div>
+    <div class="legend-card">
+      <h3>Neutros y jerarquía</h3>
+      <div class="swatch-row">
+        <span class="swatch" style="background:var(--paper); border:1px solid var(--line);"></span>
+        <span class="swatch" style="background:var(--surface); border:1px solid var(--line);"></span>
+        <span class="swatch" style="background:var(--ink)"></span>
+        <span class="swatch" style="background:var(--ink-soft)"></span>
+      </div>
+      <p style="font-size:14px;">Un fondo con textura de puntos (como el papel cuadriculado de un plano) y dos tintas de texto bastan para crear jerarquía sin saturar de color.</p>
+    </div>
+    <div class="legend-card">
+      <h3>Contraste y accesibilidad</h3>
+      <div class="contrast-demo">
+        <span class="contrast-chip" style="background:var(--ink); color:var(--paper);">Aa 15.8:1</span>
+        <span class="contrast-chip" style="background:var(--c2xx); color:#fff;">Aa 4.6:1</span>
+        <span class="contrast-chip" style="background:var(--c3xx); color:#20221F;">Aa 8.6:1</span>
+      </div>
+      <p style="font-size:14px; margin-top:10px;">Cada combinación texto/fondo cumple un contraste mínimo AA (≥4.5:1), siguiendo las pautas WCAG de accesibilidad. El foco de teclado también es visible en toda la navegación.</p>
+    </div>
+    <div class="legend-card">
+      <h3>Modo claro / oscuro</h3>
+      <p style="font-size:14px;">El botón <code class="inline">● oscuro</code> del encabezado invierte la luminosidad conservando el matiz de cada línea, igual que un mapa nocturno del metro.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= LINEA A: ARQUITECTURA ================= -->
+<section id="linea-a" class="reveal" data-label="Línea A · Arquitectura" data-color="var(--c1xx)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c1xx)"></span>Línea A · Conceptos básicos</p>
+  <h2>Arquitectura cliente-servidor</h2>
+  <p>HTTP se apoya en un paradigma estricto: el <strong>cliente</strong> abre la conexión y envía una petición; el <strong>servidor</strong> escucha, procesa y responde. Es un ciclo atómico e independiente que se repite en cada intercambio, como cada viaje de un tren entre dos estaciones.</p>
+  <p>HTTP es <strong>stateless</strong> (sin estado): el servidor no recuerda peticiones anteriores. Esto simplifica el diseño y facilita escalar, pero obliga a usar cookies o tokens —el "boleto" que el cliente muestra en cada viaje— para mantener la sesión.</p>
+
+  <h3 style="margin-top:34px;">Anatomía del boleto (mensaje HTTP)</h3>
+  <div class="route-panel">
+    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anatomía de una petición y una respuesta HTTP">
+      <rect x="10" y="10" width="330" height="180" rx="14" fill="var(--surface)" stroke="var(--c1xx)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="25" y="34" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="var(--c1xx)">BOLETO DE IDA (REQUEST)</text>
+      <text x="25" y="58" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--ink)">GET /usuarios/12 HTTP/1.1</text>
+      <line x1="25" y1="68" x2="315" y2="68" stroke="var(--line)"/>
+      <text x="25" y="86" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">Host: api.ejemplo.com</text>
+      <text x="25" y="102" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">Authorization: Bearer ***</text>
+      <text x="25" y="118" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">Content-Type: application/json</text>
+      <line x1="25" y1="130" x2="315" y2="130" stroke="var(--line)"/>
+      <text x="25" y="150" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">carga: (vacía en un GET)</text>
+
+      <rect x="360" y="10" width="330" height="180" rx="14" fill="var(--surface)" stroke="var(--c2xx)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="375" y="34" font-family="JetBrains Mono, monospace" font-weight="700" font-size="12" fill="var(--c2xx)">BOLETO DE VUELTA (RESPONSE)</text>
+      <text x="375" y="58" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--ink)">HTTP/1.1 200 OK</text>
+      <line x1="375" y1="68" x2="665" y2="68" stroke="var(--line)"/>
+      <text x="375" y="86" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">Content-Type: application/json</text>
+      <text x="375" y="102" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">Cache-Control: max-age=60</text>
+      <line x1="375" y1="114" x2="665" y2="114" stroke="var(--line)"/>
+      <text x="375" y="134" font-family="JetBrains Mono, monospace" font-size="10.5" fill="var(--ink-soft)">{ "id": 12, "nombre": "Ana" }</text>
+    </svg>
+  </div>
+
+  <figure class="media">
+    <img src="img/servidores.jpg" alt="Centro de datos con servidores, donde vive el lado 'servidor' de la arquitectura HTTP" loading="lazy">
+    <figcaption>Los servidores son la "estación terminal" que procesa cada petición y genera la respuesta.</figcaption>
+  </figure>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= LINEA B: METODOS ================= -->
+<section id="linea-b" class="reveal" data-label="Línea B · Métodos" data-color="var(--c2xx)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c2xx)"></span>Línea B · Verbos HTTP</p>
+  <h2>Métodos como paradas de la línea</h2>
+  <p>Cada verbo es una parada con una función fija. Usar la parada correcta habilita ventajas automáticas, como el caché de los GET.</p>
+
+  <div class="ticket-grid">
+    <div class="ticket" style="border-top:4px solid var(--c2xx);">
+      <span class="stop-name">GET</span><span class="line-tag">parada de lectura</span>
+      <p>Solicita la representación de un recurso. Segura e idempotente: repetirla no cambia el estado del servidor.</p>
+      <span class="platform" style="background:var(--c2xx);">andén 1 · solo lectura</span>
+    </div>
+    <div class="ticket" style="border-top:4px solid var(--c1xx);">
+      <span class="stop-name">POST</span><span class="line-tag">parada de creación</span>
+      <p>Envía datos para crear un nuevo recurso o procesar una carga útil. No es idempotente.</p>
+      <span class="platform" style="background:var(--c1xx);">andén 2 · crea</span>
+    </div>
+    <div class="ticket" style="border-top:4px solid var(--c3xx);">
+      <span class="stop-name">PUT</span><span class="line-tag">parada de reemplazo</span>
+      <p>Reemplaza por completo el recurso objetivo. Idempotente: repetirla da el mismo resultado.</p>
+      <span class="platform" style="background:var(--c3xx);">andén 3 · reemplaza</span>
+    </div>
+    <div class="ticket" style="border-top:4px solid var(--c5xx);">
+      <span class="stop-name">PATCH</span><span class="line-tag">parada de ajuste</span>
+      <p>Aplica una modificación parcial a un recurso existente, a diferencia de PUT.</p>
+      <span class="platform" style="background:var(--c5xx);">andén 4 · actualiza</span>
+    </div>
+    <div class="ticket" style="border-top:4px solid var(--c4xx);">
+      <span class="stop-name">DELETE</span><span class="line-tag">parada final</span>
+      <p>Solicita la eliminación del recurso especificado.</p>
+      <span class="platform" style="background:var(--c4xx);">andén 5 · elimina</span>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;">Ejemplo práctico con JavaScript</h3>
+  <p>La <code class="inline">Fetch API</code> del navegador emite peticiones HTTP reales desde JavaScript. Estos ejemplos muestran un boleto de ida GET y uno de creación POST:</p>
+
+  <div class="code-block">
+    <div class="code-head"><span>fetch-get.js</span><button class="copy-btn">Copiar</button></div>
+    <pre><code>fetch("https://api.ejemplo.com/usuarios/12")
+  .then(function (response) { return response.json(); })
+  .then(function (data) { console.log(data); })
+  .catch(function (error) { console.error("Error:", error); });</code></pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-head"><span>fetch-post.js</span><button class="copy-btn">Copiar</button></div>
+    <pre><code>fetch("https://api.ejemplo.com/usuarios", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ nombre: "Ana", correo: "ana@ejemplo.com" })
+})
+  .then(function (response) { return response.json(); })
+  .then(function (data) { console.log("Creado:", data); });</code></pre>
+  </div>
+
+  <figure class="media">
+    <img src="img/codigo.jpg" alt="Código de desarrollo web relacionado con peticiones HTTP" loading="lazy">
+    <figcaption>Cada línea de código, en el cliente o en el servidor, construye una parte del mensaje HTTP.</figcaption>
+  </figure>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= LINEA C: CODIGOS ================= -->
+<section id="linea-c" class="reveal" data-label="Línea C · Códigos" data-color="var(--c3xx)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c3xx)"></span>Línea C · Anatomía de la respuesta</p>
+  <h2>Tablero de salidas: códigos de estado</h2>
+  <p>Como en un tablero de aeropuerto, cada código de tres dígitos anuncia de inmediato el resultado del viaje. El primer dígito indica la familia.</p>
+
+  <div class="departures">
+    <div class="row"><span class="code-chip" style="background:var(--c1xx);">1xx</span><span class="fam">Informativos</span><span class="desc">La petición fue recibida y el proceso continúa. Ej. 100 Continue.</span></div>
+    <div class="row"><span class="code-chip" style="background:var(--c2xx);">2xx</span><span class="fam">Éxito</span><span class="desc">200 OK es el estándar de éxito; 201 Created confirma que un POST generó un nuevo registro.</span></div>
+    <div class="row"><span class="code-chip" style="background:var(--c3xx);">3xx</span><span class="fam">Redirección</span><span class="desc">El cliente debe tomar una acción adicional. Ej. 301 Moved Permanently.</span></div>
+    <div class="row"><span class="code-chip" style="background:var(--c4xx);">4xx</span><span class="fam">Error del cliente</span><span class="desc">404 Not Found, 400 Bad Request y 401 Unauthorized son los más comunes.</span></div>
+    <div class="row"><span class="code-chip" style="background:var(--c5xx);">5xx</span><span class="fam">Error del servidor</span><span class="desc">500 Internal Server Error: el servidor falló al procesar una solicitud aparentemente válida.</span></div>
+  </div>
+
+  <p style="margin-top:26px;"><strong>Aporte personal:</strong> los códigos de estado son la verdadera interfaz de usuario de una API. Devolver siempre <code class="inline">200 OK</code> con un error encapsulado en el JSON es un antipatrón: usar el código correcto facilita la depuración y hace el software más predecible.</p>
+
+  <figure class="media">
+    <img src="img/tablero-salidas.jpg" alt="Tablero de salidas de aeropuerto, referencia visual de un código de estado anunciando un resultado" loading="lazy">
+    <figcaption>Así como un tablero de salidas anuncia un resultado, un código de estado anuncia el resultado de la petición.</figcaption>
+  </figure>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= LINEA D: EVOLUCION ================= -->
+<section id="linea-d" class="reveal" data-label="Línea D · Evolución" data-color="var(--c5xx)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c5xx)"></span>Línea D · Historia y seguridad</p>
+  <h2>Tres vías hacia HTTP/3, y la terminal HTTPS</h2>
+  <p>Piensa en HTTP/1.1, HTTP/2 y HTTP/3 como tres vías que salieron en distintas épocas pero llegan a la misma terminal: una comunicación más rápida y segura entre cliente y servidor.</p>
+
+  <div class="tracks">
+    <div class="track">
+      <span class="rail" style="background:var(--c1xx);">1997</span>
+      <div class="info"><h3>HTTP/1.1</h3><p>Introdujo las conexiones persistentes (keep-alive), permitiendo enviar varias peticiones por la misma conexión TCP.</p></div>
+    </div>
+    <div class="track">
+      <span class="rail" style="background:var(--c2xx);">2015</span>
+      <div class="info"><h3>HTTP/2</h3><p>Protocolo binario con multiplexación: varias peticiones y respuestas viajan a la vez sobre una sola conexión TCP, eliminando el bloqueo de cabeza de línea.</p></div>
+    </div>
+    <div class="track">
+      <span class="rail" style="background:var(--c5xx);">2022</span>
+      <div class="info"><h3>HTTP/3</h3><p>Abandona TCP por QUIC, basado en UDP. Reduce la latencia de conexión y mejora la estabilidad en redes móviles.</p></div>
+    </div>
+  </div>
+
+  <h3 style="margin-top:40px;">Terminal HTTPS: HTTP sobre TLS</h3>
+  <p>HTTPS no es una vía distinta, sino HTTP circulando sobre una capa de cifrado SSL/TLS. Toda ruta segura pasa por tres andenes:</p>
+  <div class="pillars">
+    <div class="pillar"><h3 style="color:var(--c1xx);">Cifrado</h3><p style="font-size:14px;">Los datos viajan ininteligibles para terceros.</p></div>
+    <div class="pillar"><h3 style="color:var(--c2xx);">Integridad</h3><p style="font-size:14px;">Los datos no pueden alterarse en el camino.</p></div>
+    <div class="pillar"><h3 style="color:var(--c5xx);">Autenticación</h3><p style="font-size:14px;">Confirma que el servidor es quien dice ser.</p></div>
+  </div>
+  <p style="margin-top:22px;">Cuando los cimientos como TCP se vuelven un cuello de botella, a veces la única forma de avanzar es tender una vía nueva —esa es la lección de HTTP/3. Hoy, HTTPS dejó de ser un lujo de pasarelas de pago para convertirse en el estándar mínimo de cualquier transmisión de datos.</p>
+
+  <div class="photo-grid">
+    <figure class="media">
+      <img src="img/fibra-optica.jpg" alt="Cables de fibra óptica, base física del transporte de datos moderno" loading="lazy">
+      <figcaption>La fibra óptica es una de las vías físicas que hoy transportan el tráfico HTTP a gran velocidad.</figcaption>
+    </figure>
+
+    <figure class="media">
+      <video controls preload="metadata" poster="img/video-poster.jpg">
+        <source src="video/explicacion-http.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video. Puedes descargar el archivo desde <code class="inline">video/explicacion-http.mp4</code>.
+      </video>
+      <figcaption>Video complementario: qué es HTTP, cómo funciona y para qué sirve.</code>.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= GLOSARIO ================= -->
+<section id="glosario" class="reveal" data-label="Glosario" data-color="var(--c4xx)">
+  <p class="eyebrow"><span class="dot" style="background:var(--c4xx)"></span>Para consultar rápido</p>
+  <h2>Glosario de la ruta</h2>
+  <p>Términos que aparecen en el recorrido, explicados en una línea. Haz clic en cada uno para expandirlo.</p>
+
+  <div class="glossary">
+    <details>
+      <summary>Stateless (sin estado)</summary>
+      <div class="term-body">El servidor no guarda memoria de peticiones anteriores del mismo cliente; cada viaje es independiente del anterior.</div>
+    </details>
+    <details>
+      <summary>Idempotente</summary>
+      <div class="term-body">Una operación es idempotente si repetirla varias veces produce el mismo resultado que hacerla una sola vez (como GET o PUT).</div>
+    </details>
+    <details>
+      <summary>Multiplexación</summary>
+      <div class="term-body">Capacidad de HTTP/2 de enviar varias peticiones y respuestas al mismo tiempo por una sola conexión, sin esperar a que termine la anterior.</div>
+    </details>
+    <details>
+      <summary>Handshake TCP</summary>
+      <div class="term-body">El intercambio inicial de mensajes entre cliente y servidor para establecer una conexión confiable antes de transmitir datos.</div>
+    </details>
+    <details>
+      <summary>TLS / SSL</summary>
+      <div class="term-body">La capa de cifrado que convierte HTTP en HTTPS, garantizando cifrado, integridad y autenticación del servidor.</div>
+    </details>
+    <details>
+      <summary>Cache-Control</summary>
+      <div class="term-body">Cabecera que le dice al navegador cuánto tiempo puede reutilizar una respuesta sin volver a pedirla al servidor.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= MAPA COMPLETO ================= -->
+<section id="mapa" class="reveal" data-label="Mapa completo" data-color="var(--ink)">
+  <p class="eyebrow"><span class="dot" style="background:var(--ink)"></span>Navegación</p>
+  <h2>Mapa completo de la red</h2>
+  <p class="muted" style="font-family:var(--mono); font-size:13px;">Estación central → 4 líneas de contenido</p>
+
+  <div class="route-panel">
+    <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa del sitio estilo red de metro">
+      <rect x="330" y="10" width="100" height="42" rx="21" fill="var(--ink)"/>
+      <text x="380" y="35" text-anchor="middle" fill="var(--paper)" font-family="Space Grotesk, sans-serif" font-size="12" font-weight="600">Central</text>
+
+      <line x1="380" y1="52" x2="380" y2="70" stroke="var(--line)" stroke-width="2"/>
+      <line x1="95" y1="70" x2="665" y2="70" stroke="var(--line)" stroke-width="2"/>
+      <line x1="95" y1="70" x2="95" y2="90" stroke="var(--c1xx)" stroke-width="3"/>
+      <line x1="285" y1="70" x2="285" y2="90" stroke="var(--c2xx)" stroke-width="3"/>
+      <line x1="475" y1="70" x2="475" y2="90" stroke="var(--c3xx)" stroke-width="3"/>
+      <line x1="665" y1="70" x2="665" y2="90" stroke="var(--c5xx)" stroke-width="3"/>
+
+      <circle cx="95" cy="100" r="12" fill="var(--c1xx)"/>
+      <text x="95" y="130" text-anchor="middle" font-size="11" font-family="Space Grotesk, sans-serif" font-weight="600" fill="var(--ink)">Línea A</text>
+      <text x="95" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-soft)">Arquitectura</text>
+
+      <circle cx="285" cy="100" r="12" fill="var(--c2xx)"/>
+      <text x="285" y="130" text-anchor="middle" font-size="11" font-family="Space Grotesk, sans-serif" font-weight="600" fill="var(--ink)">Línea B</text>
+      <text x="285" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-soft)">Métodos HTTP</text>
+
+      <circle cx="475" cy="100" r="12" fill="var(--c3xx)"/>
+      <text x="475" y="130" text-anchor="middle" font-size="11" font-family="Space Grotesk, sans-serif" font-weight="600" fill="var(--ink)">Línea C</text>
+      <text x="475" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-soft)">Códigos de estado</text>
+
+      <circle cx="665" cy="100" r="12" fill="var(--c5xx)"/>
+      <text x="665" y="130" text-anchor="middle" font-size="11" font-family="Space Grotesk, sans-serif" font-weight="600" fill="var(--ink)">Línea D</text>
+      <text x="665" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-soft)">Evolución &amp; HTTPS</text>
+
+      <text x="95" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--ink-soft)">Cliente-servidor · stateless</text>
+      <text x="285" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--ink-soft)">GET, POST, PUT, PATCH, DELETE</text>
+      <text x="475" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--ink-soft)">1xx – 5xx</text>
+      <text x="665" y="176" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--ink-soft)">HTTP/1.1 → HTTP/3, HTTPS</text>
+    </svg>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ================= REFERENCIAS ================= -->
+<section id="referencias" class="reveal" data-label="Referencias" data-color="var(--ink-soft)">
+  <p class="eyebrow"><span class="dot" style="background:var(--ink-soft)"></span>Fuentes consultadas</p>
+  <h2>Referencias bibliográficas</h2>
+  <ul class="refs">
+    <li><span class="idx">01</span><span>Fielding, R., &amp; Reschke, J. (2014). <em>Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</em>. Internet Engineering Task Force (IETF). <a href="https://tools.ietf.org/html/rfc7230" target="_blank" rel="noopener">tools.ietf.org/html/rfc7230</a></span></li>
+    <li><span class="idx">02</span><span>Gourley, D., &amp; Totty, B. (2002). <em>HTTP: The Definitive Guide.</em> Sebastopol, CA: O'Reilly Media, Inc.</span></li>
+    <li><span class="idx">03</span><span>Mozilla Developer Network. (2023). <em>An overview of HTTP.</em> MDN Web Docs. <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Overview" target="_blank" rel="noopener">developer.mozilla.org/es/docs/Web/HTTP/Overview</a></span></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <span>UNACH · Escuela de Tecnologías Digitales Aplicadas · Lic. en Sistemas Computacionales</span>
+    <span>Investigación Documental (HTTP) · Variación "Mapa de Ruta" · ago. 2026</span>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<script src="main.js"></script>
+</body>
+</html>

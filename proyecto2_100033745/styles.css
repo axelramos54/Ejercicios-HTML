@@ -1,0 +1,259 @@
+/* =========================================================================
+   HTTP — Mapa de Ruta (variación de diseño)
+   styles.css — CSS3: variables, grid, flexbox, animaciones, tema oscuro
+   ========================================================================= */
+
+:root{
+  --paper:#F7F4EC;
+  --surface:#FFFFFF;
+  --ink:#20221F;
+  --ink-soft:#6B6A5F;
+  --line:#DEDACB;
+
+  --c1xx:#3B7DC4; /* Línea A — informativo / arquitectura */
+  --c2xx:#3F9463; /* Línea B — éxito / métodos */
+  --c3xx:#D98A3D; /* Línea C — redirección / códigos */
+  --c4xx:#C4573B; /* error cliente / mapa completo */
+  --c5xx:#7A5AA8; /* Línea D — servidor / evolución-HTTPS */
+
+  --mono:'JetBrains Mono','Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:'Space Grotesk','Inter',system-ui,-apple-system,sans-serif;
+  --body:'Inter',system-ui,-apple-system,sans-serif;
+  --content-max:920px;
+  --shadow-sm:0 1px 2px rgba(32,34,31,.06);
+  --shadow-md:0 8px 24px rgba(32,34,31,.10);
+}
+[data-theme="dark"]{
+  --paper:#191A16; --surface:#212219; --ink:#EDEBDF; --ink-soft:#A6A493; --line:#33342B;
+  --c1xx:#6FA6E0; --c2xx:#63B98A; --c3xx:#E5A868; --c4xx:#DD8069; --c5xx:#A487D0;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(var(--line) 1px, transparent 1px) 0 0/22px 22px,
+    var(--paper);
+  color:var(--ink); font-family:var(--body); line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s ease, color .25s ease;
+}
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+
+/* ---------- Salto de accesibilidad ---------- */
+.skip-link{
+  position:absolute; left:-999px; top:0; z-index:100;
+  background:var(--c2xx); color:#fff; padding:10px 16px; border-radius:0 0 8px 0;
+  font-family:var(--mono); font-size:13px; text-decoration:none;
+}
+.skip-link:focus{ left:0; }
+
+/* ---------- Foco visible (accesibilidad de teclado) ---------- */
+a:focus-visible, button:focus-visible, summary:focus-visible{
+  outline:2px solid var(--c2xx); outline-offset:2px; border-radius:4px;
+}
+
+/* ---------- Encabezado tipo letrero de andén ---------- */
+.platform-header{
+  position:sticky; top:0; z-index:60;
+  background:var(--ink); color:var(--paper);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; font-family:var(--mono); font-size:12px;
+  border-bottom:4px solid var(--c2xx);
+  transition:border-color .3s ease;
+}
+.platform-header .brand{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.04em; }
+.platform-header .brand .badge{
+  width:26px; height:26px; border-radius:50%; background:var(--c2xx); color:var(--ink);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px;
+  transition:background .3s ease;
+}
+.now-at{ color:#9C9A8C; margin-left:14px; display:none; }
+@media (min-width:640px){ .now-at{ display:inline; } }
+.header-actions{ display:flex; align-items:center; gap:10px; }
+.theme-toggle{
+  font-family:var(--mono); font-size:11px; background:transparent; color:var(--paper);
+  border:1px solid #555; border-radius:20px; padding:4px 10px; cursor:pointer;
+}
+.theme-toggle:hover{ border-color:var(--c2xx); }
+
+/* ---------- Barra de progreso (vía + tren) ---------- */
+.route-progress{
+  position:sticky; top:41px; z-index:58; height:4px; background:var(--line); overflow:visible;
+}
+.route-progress .fill{ height:100%; width:0%; background:var(--c2xx); transition:width .1s linear, background .3s ease; }
+.route-progress .train{
+  position:absolute; top:50%; width:12px; height:12px; border-radius:50%;
+  background:var(--c2xx); border:2px solid var(--surface); box-shadow:var(--shadow-sm);
+  transform:translate(-50%,-50%); left:0%; transition:left .1s linear, background .3s ease;
+}
+
+/* ---------- Leyenda de líneas = navegación ---------- */
+.line-legend{
+  position:sticky; top:45px; z-index:59;
+  background:rgba(247,244,236,.95); backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; padding:0 14px;
+}
+[data-theme="dark"] .line-legend{ background:rgba(25,26,22,.92); }
+.legend-links{ display:flex; gap:4px; overflow-x:auto; }
+.legend-links a{
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--ink-soft);
+  padding:12px 10px; white-space:nowrap; border-bottom:2px solid transparent; transition:.15s;
+}
+.legend-links a .dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.legend-links a:hover, .legend-links a.active{ color:var(--ink); border-bottom-color:currentColor; }
+.nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:10px; }
+.nav-toggle span{ display:block; width:20px; height:2px; background:var(--ink); margin:4px 0; transition:.2s; }
+.nav-overlay{
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.25); z-index:55;
+}
+.nav-overlay.visible{ display:block; }
+
+section{ padding:70px 20px; max-width:var(--content-max); margin:0 auto; scroll-margin-top:100px; }
+.eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+.eyebrow .dot{ width:8px; height:8px; border-radius:50%; }
+h1,h2,h3{ font-family:var(--display); font-weight:600; margin:0 0 .4em; line-height:1.12; }
+h2{ font-size:clamp(28px,4vw,38px); letter-spacing:-.01em; }
+h3{ font-size:19px; }
+p{ max-width:68ch; }
+.muted{ color:var(--ink-soft); }
+.divider{ max-width:var(--content-max); margin:0 auto; border:none; border-top:1px dashed var(--line); }
+svg{ display:block; max-width:100%; height:auto; }
+
+/* ---------- Revelado progresivo al hacer scroll ---------- */
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .5s ease, transform .5s ease; }
+.reveal.revealed{ opacity:1; transform:translateY(0); }
+
+/* ---------- Hero ---------- */
+.hero{ padding:80px 20px 50px; max-width:1040px; margin:0 auto; }
+.hero h1{ font-size:clamp(44px,8vw,84px); letter-spacing:-.03em; }
+.hero p.lead{ font-size:18px; color:var(--ink-soft); max-width:62ch; margin-top:10px; }
+.ticket-strip{ margin-top:24px; display:flex; flex-wrap:wrap; gap:8px; font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); }
+.ticket-strip span{ border:1px dashed var(--line); border-radius:6px; padding:5px 10px; background:var(--surface); }
+.route-panel{ margin-top:44px; border:1px solid var(--line); border-radius:16px; background:var(--surface); padding:26px; overflow-x:auto; box-shadow:var(--shadow-sm); }
+
+/* ---------- Tarjetas tipo boleto (métodos) ---------- */
+.ticket-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:28px; }
+.ticket{
+  position:relative; background:var(--surface); border-radius:12px; padding:20px;
+  border:1px solid var(--line); overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.ticket:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.ticket .stop-name{ font-family:var(--mono); font-weight:700; font-size:15px; letter-spacing:.03em; }
+.ticket .line-tag{ font-family:var(--mono); font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; display:block; }
+.ticket p{ font-size:14px; color:var(--ink-soft); margin-top:10px; }
+.ticket .platform{ margin-top:12px; font-family:var(--mono); font-size:10.5px; padding:3px 8px; border-radius:10px; display:inline-block; color:#fff; }
+
+/* ---------- Ejemplos de código ---------- */
+.code-block{ position:relative; margin-top:22px; background:var(--ink); color:#E7E9EC; border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm); }
+[data-theme="dark"] .code-block{ background:#101210; }
+.code-block .code-head{ display:flex; justify-content:space-between; align-items:center; padding:8px 14px; font-family:var(--mono); font-size:11px; color:#A6A493; border-bottom:1px solid rgba(255,255,255,.08); }
+.copy-btn{ font-family:var(--mono); font-size:11px; color:#E7E9EC; background:rgba(255,255,255,.08); border:none; border-radius:6px; padding:4px 9px; cursor:pointer; }
+.copy-btn:hover{ background:rgba(255,255,255,.16); }
+.code-block pre{ margin:0; padding:16px 18px; overflow-x:auto; font-family:var(--mono); font-size:12.5px; line-height:1.6; }
+
+/* ---------- Sistema de color / leyenda ---------- */
+.legend-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:28px; }
+.legend-card{ border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:18px; box-shadow:var(--shadow-sm); }
+.swatch-row{ display:flex; gap:8px; margin-bottom:12px; }
+.swatch{ width:30px; height:30px; border-radius:50%; border:1px solid rgba(0,0,0,.08); }
+.contrast-demo{ display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.contrast-chip{ font-family:var(--mono); font-size:11.5px; padding:7px 11px; border-radius:8px; }
+
+/* ---------- Tablero de salidas (códigos de estado) ---------- */
+.departures{ margin-top:28px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow-sm); }
+.departures .row{
+  display:grid; grid-template-columns:70px 130px 1fr; gap:14px; align-items:center;
+  padding:16px 18px; border-bottom:1px solid var(--line); font-family:var(--mono);
+}
+.departures .row:last-child{ border-bottom:none; }
+.departures .code-chip{ font-weight:700; font-size:14px; padding:4px 0; text-align:center; border-radius:6px; color:#fff; }
+.departures .fam{ font-size:12.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em; }
+.departures .desc{ font-family:var(--body); font-size:14px; }
+
+/* ---------- Vías paralelas (evolución) ---------- */
+.tracks{ margin-top:32px; display:flex; flex-direction:column; gap:26px; }
+.track{ display:flex; align-items:flex-start; gap:16px; }
+.track .rail{ flex-shrink:0; width:64px; text-align:center; font-family:var(--mono); font-size:11px; padding:8px 4px; border-radius:8px; color:#fff; font-weight:700; }
+.track .info h3{ margin:0 0 4px; }
+.track .info p{ font-size:14px; color:var(--ink-soft); margin:0; }
+
+.pillars{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+.pillar{ flex:1; min-width:180px; border:1px solid var(--line); border-radius:12px; padding:18px; background:var(--surface); }
+
+figure.media{ margin-top:32px; border:1px solid var(--line); border-radius:16px; background:var(--surface); overflow:hidden; }
+figure.media img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+figure.media video{ width:100%; aspect-ratio:16/9; display:block; background:#000; }
+.video-wrap{ position:relative; padding-top:56.25%; height:0; }
+.video-wrap iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
+figure.media figcaption{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); padding:12px 18px; border-top:1px solid var(--line); }
+
+/* ---------- Galería de fotos (2 columnas en pantallas medianas+) ---------- */
+.photo-grid{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:28px; }
+@media (min-width:640px){ .photo-grid{ grid-template-columns:1fr 1fr; } }
+.photo-grid figure.media{ margin-top:0; }
+
+code.inline{ font-family:var(--mono); background:var(--paper); border:1px solid var(--line); padding:1px 6px; border-radius:5px; font-size:.9em; }
+
+/* ---------- Glosario (acordeón nativo <details>) ---------- */
+.glossary{ margin-top:28px; display:flex; flex-direction:column; gap:10px; }
+.glossary details{
+  border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:0; overflow:hidden;
+}
+.glossary summary{
+  cursor:pointer; list-style:none; padding:14px 18px; font-family:var(--mono); font-weight:700; font-size:13.5px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.glossary summary::-webkit-details-marker{ display:none; }
+.glossary summary::after{ content:'+'; font-size:16px; color:var(--ink-soft); transition:transform .2s ease; }
+.glossary details[open] summary::after{ content:'–'; }
+.glossary .term-body{ padding:0 18px 16px; font-size:14px; color:var(--ink-soft); }
+
+/* ---------- Referencias ---------- */
+.refs{ list-style:none; margin:26px 0 0; padding:0; display:flex; flex-direction:column; gap:12px; }
+.refs li{ border:1px dashed var(--line); border-radius:10px; padding:16px 18px; background:var(--surface); display:flex; gap:14px; }
+.refs .idx{ font-family:var(--mono); color:var(--c2xx); font-weight:700; font-size:13px; }
+.refs a{ text-decoration:underline; text-decoration-color:var(--line); }
+
+/* ---------- Footer ---------- */
+footer{ background:var(--ink); color:var(--paper); padding:40px 20px; margin-top:40px; font-family:var(--mono); font-size:12.5px; }
+footer .foot-inner{ max-width:var(--content-max); margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#B9B6A5; }
+
+/* ---------- Botón volver arriba ---------- */
+.back-to-top{
+  position:fixed; right:20px; bottom:20px; z-index:70; width:42px; height:42px; border-radius:50%;
+  border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer;
+  box-shadow:var(--shadow-md); opacity:0; pointer-events:none; transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease; display:flex; align-items:center; justify-content:center;
+}
+.back-to-top.visible{ opacity:1; pointer-events:auto; transform:translateY(0); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width:760px){
+  .nav-toggle{ display:block; }
+  .legend-links{
+    position:absolute; top:100%; left:0; right:0; flex-direction:column; background:var(--paper);
+    border-bottom:1px solid var(--line); max-height:0; overflow:hidden; transition:max-height .25s ease;
+  }
+  .legend-links.open{ max-height:360px; overflow-y:auto; }
+  .legend-links a{ padding:14px 18px; border-bottom:1px solid var(--line); }
+  .departures .row{ grid-template-columns:56px 1fr; }
+}
+
+/* ---------- Impresión limpia ---------- */
+@media print{
+  .platform-header, .line-legend, .route-progress, .back-to-top, .nav-overlay, figure.media video{ display:none !important; }
+  body{ background:#fff; }
+  section{ padding:20px 0; }
+  .route-panel, .ticket, .legend-card, .departures, .code-block{ box-shadow:none; break-inside:avoid; }
+}
