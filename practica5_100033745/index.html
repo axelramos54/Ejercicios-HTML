@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 5 - Introducción a CSS</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS interno para demostrar la cascada y la especificidad */
+        p {
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- HEADER con id único: estilo exclusivo mediante #encabezado -->
+    <header id="encabezado">
+    <h1>Ada Lovelace</h1>
+    <p class="tagline">Matemática y primera programadora de la historia</p>
+    <nav>
+      <a href="#biografia">Biografía</a>
+      <a href="#legado">Legado</a>
+      <a href="#cronologia">Cronología</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="biografia">
+      <h2>¿Quién fue?</h2>
+      <p>Augusta Ada King, condesa de Lovelace, nació en Londres en 1815. Hija del poeta Lord Byron, se formó en matemáticas desde joven bajo la tutela de reconocidos científicos de su época.</p>
+
+      <!-- Selector de clase: párrafo destacado dentro del flujo de texto -->
+      <p class="destacado">"La Máquina Analítica no tiene pretensión alguna de originar nada. Puede hacer aquello que sepamos ordenarle que ejecute."</p>
+
+      <p>Trabajó junto a Charles Babbage en el diseño de la Máquina Analítica y escribió lo que hoy se considera el primer algoritmo destinado a ser ejecutado por una máquina.</p>
+    </section>
+
+    <section id="legado">
+      <h2>Su legado</h2>
+      <ul>
+        <li class="tarjeta">
+          <h3>Primer algoritmo</h3>
+          <p>Diseñó una secuencia de instrucciones para calcular números de Bernoulli en la Máquina Analítica.</p>
+        </li>
+        <li class="tarjeta">
+          <h3>Notas ampliadas</h3>
+          <p>Sus notas al traducir un artículo sobre la máquina triplicaron la extensión del texto original.</p>
+        </li>
+        <li class="tarjeta">
+          <h3>Visión anticipada</h3>
+          <p>Intuyó que las máquinas podrían procesar algo más que números: símbolos, música, imágenes.</p>
+        </li>
+      </ul>
+
+      <a class="boton-enlace" href="https://es.wikipedia.org/wiki/Ada_Lovelace" target="_blank" rel="noopener">Leer más sobre Ada</a>
+    </section>
+
+    <section id="cronologia">
+      <h2>Cronología</h2>
+      <table>
+        <thead>
+          <tr><th>Año</th><th>Suceso</th><th>Lugar</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1815</td><td>Nace Augusta Ada Byron</td><td>Londres, Inglaterra</td></tr>
+          <tr><td>1833</td><td>Conoce a Charles Babbage</td><td>Londres, Inglaterra</td></tr>
+          <tr><td>1843</td><td>Publica sus notas sobre la Máquina Analítica</td><td>Londres, Inglaterra</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <aside>
+      <h3>Dato curioso</h3>
+      <!-- 3) CSS EN LÍNEA: especificidad máxima (1,0,0,0). -->
+      <p style="color:#7A3E9D; font-style:italic;">
+        El lenguaje de programación "Ada", usado en sistemas aeroespaciales y de defensa, fue nombrado en su honor.
+      </p>
+    </aside>
+  </main>
+
+  <!-- FOOTER con id único: estilo exclusivo mediante #pie -->
+  <footer id="pie">
+    <p>Plantilla de ejemplo — Práctica 5 · Introducción a CSS</p>
+  </footer>
+
+
+</body>
+</html>

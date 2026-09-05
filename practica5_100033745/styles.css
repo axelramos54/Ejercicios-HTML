@@ -1,0 +1,171 @@
+/* ============================================================
+   RESET GLOBAL — selector universal (*)
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   ESTILOS BASE — selectores de tipo (etiqueta)
+   ============================================================ */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #23283A;
+    background-color: #EFEDE6;
+}
+
+h1,
+h2,
+h3 {
+    /* selector agrupado */
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #101B2D;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-size: 26px;
+    border-bottom: 2px solid #B08D3E;
+    padding-bottom: 8px;
+    margin-top: 8px;
+}
+
+p {
+    margin-bottom: 14px;
+    max-width: 68ch;
+}
+
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+a {
+    color: #7A2E2E;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 30px;
+    background-color: #FFFFFF;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #D8D3C4;
+}
+
+th {
+    background-color: #101B2D;
+    color: #F2EEE3;
+    font-family: Georgia, serif;
+}
+
+/* ============================================================
+   IDENTIFICADORES (#id) — estilo exclusivo de elementos únicos
+   ============================================================ */
+#encabezado {
+    background-color: #101B2D;
+    color: #F2EEE3;
+    padding: 48px 24px 28px;
+    text-align: center;
+}
+
+#encabezado h1 {
+    /* selector descendiente */
+    color: #F2EEE3;
+    font-size: 40px;
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    color: #C9BFA0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+nav a {
+    /* selector descendiente */
+    color: #E8D9A8;
+    margin: 0 12px;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+}
+
+nav a:hover {
+    border-bottom: 1px solid #B08D3E;
+}
+
+#pie {
+    background-color: #101B2D;
+    color: #C9BFA0;
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/* ============================================================
+   CLASES (.clase) — estilos reutilizables
+   ============================================================ */
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.destacado {
+    background-color: #FBF6E9;
+    border-left: 4px solid #B08D3E;
+    padding: 16px 20px;
+    font-style: italic;
+    font-family: Georgia, serif;
+    margin: 20px 0;
+}
+
+.tarjeta {
+    background-color: #FFFFFF;
+    border: 1px solid #DCD6C4;
+    border-radius: 6px;
+    padding: 18px 20px;
+}
+
+.tarjeta h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.tarjeta p {
+    font-size: 15px;
+    color: #4A4E5C;
+    margin-bottom: 0;
+}
+
+.boton-enlace {
+    display: inline-block;
+    background-color: #7A2E2E;
+    color: #F2EEE3;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.boton-enlace:hover {
+    background-color: #5E2323;
+}
